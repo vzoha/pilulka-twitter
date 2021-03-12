@@ -21,10 +21,17 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
 	private $twitterUrl;
 	private $showRetweeted;
 	
-	public function __construct(TwitterService $twitterService) {
+	public function __construct(TwitterService $twitterService)
+	{
 		$this->twitterService = $twitterService;
 	}
 	
+	/**
+	 * Set parameters for displaying tweets from Twitter.
+	 *
+	 * @param string $twitterUrl base twitter URL for template
+	 * @param bool $showRetweeted if retweeted tweets should be displayed
+	 */
 	public function setParams(string $twitterUrl, bool $showRetweeted)
 	{
 		$this->twitterUrl = $twitterUrl;
@@ -33,7 +40,6 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
 	
 	public function renderDefault(): void
 	{
-		dump('bla');
 		$statusesResponse = $this->twitterService->loadPosts();
 		$this->template->twitterUrl = $this->twitterUrl;
 		$this->template->showRetweeted = $this->showRetweeted;

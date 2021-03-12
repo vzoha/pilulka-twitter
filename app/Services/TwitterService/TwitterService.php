@@ -34,6 +34,17 @@ class TwitterService
 		}
 	}
 	
+	/**
+	 * Set parameters for loading tweets from Twitter. Initial set up is done from config file, but it can be
+	 * overridden later
+	 *
+	 * @param array $orQueryParamsValidationRegex regex for query parameters validation
+	 * @param array $orQueryParams These parameters are used for searching tweets. They are separated by OR statement,
+	 * so it will find all tweets contain at least on of these parameters.
+	 * @param int $count of returned results
+	 * @param string $tweetMode can be extended or compat, when compat is used text of tweet is in text parameter,
+	 * otherwise text is in full_text parameter.
+	 */
 	public function setLoadPostsParams(array $orQueryParamsValidationRegex, array $orQueryParams, int $count = 100,
 									   string $tweetMode = 'extended')
 	{
