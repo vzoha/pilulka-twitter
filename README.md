@@ -7,10 +7,22 @@ Jedná se o jednoduchý agregátor zpráv z Twitteru, který načte zprávy z Tw
 * TwitterOAuth = 2.0 (https://github.com/abraham/twitteroauth)
 
 # Instalace
-Aplikaci je třeba nainstalovat na libovolný web server (Apache, Nginx, ...) s PHP 7.2 a následujícími moduly (mbstring, openssl, curl). URL projektu by mělo směrovat do `www` složky projektu.
+1. Aplikaci je třeba nainstalovat na libovolný web server (Apache, Nginx, ...) s PHP 7.2 a následujícími moduly (mbstring, openssl, curl).
+2. URL web serveru by mělo směrovat do `www` složky projektu.
+3. Po stažení projektu je třeba zavolat `composer update` pro stažení dodatečných knihoven.
+4. Je třeba nahrát vlastní `config/local.neon` s následující strukturou a doplnit klíče a tokeny pro Twitter API
+
+```
+parameters:
+	twitterSettings:
+		consumerKey: ''
+		consumerSecret: ''
+		oauthAccessToken: ''
+		oauthAccessTokenSecret: ''
+```
 
 # Nastavení
-Veškeré nastavení je v souboru `config/common.neon`, případně je možné nahrát vlastní `config/local.neon` a paramety vložit tam
+Veškeré nastavení je v souboru `config/common.neon` a v `config/local.neon`.
 
 Pro napojení na Twitter API je třeba doplnit klíče a tokeny:
 * `consumerKey`
