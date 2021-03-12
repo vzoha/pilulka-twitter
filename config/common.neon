@@ -1,0 +1,42 @@
+parameters:
+	twitterSettings:
+		consumerKey: ''
+		consumerSecret: ''
+		oauthAccessToken: ''
+		oauthAccessTokenSecret: ''
+		loadPostsParams:
+			orQueryParamsValidationRegex: ['#\w', 'url:\w']
+			# https://developer.twitter.com/en/docs/twitter-api/v1/rules-and-filtering/search-operators
+			orQueryParams: ['#pilulka', '#pilulkacz', 'url:pilulka.cz']
+			count: 100
+	twitterPresenterSettings:
+	    twitterUrl: 'https://www.twitter.com/'
+	    showRetweeted: false
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+di:
+	export:
+		parameters: no
+		tags: no
+
+
+services:
+	twitterService:
+		factory: App\Services\TwitterService\TwitterService(%twitterSettings.consumerKey%, %twitterSettings.consumerSecret%, %twitterSettings.oauthAccessToken%, %twitterSettings.oauthAccessTokenSecret%)
+		setup:
+			- setLoadPostsParams(%twitterSettings.loadPostsParams.orQueryParamsValidationRegex%, %twitterSettings.loadPostsParams.orQueryParams%, %twitterSettings.loadPostsParams.count%)
+	-
+		class: App\Presenters\HomepagePresenter
+		setup:
+			- setParams(%twitterPresenterSettings.twitterUrl%, %twitterPresenterSettings.showRetweeted%)
+	- App\Router\RouterFactory::createRouter

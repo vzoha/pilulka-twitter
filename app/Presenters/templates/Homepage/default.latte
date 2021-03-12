@@ -1,0 +1,17 @@
+{block content}
+	<h1 n:block="title">Příspěvky z Twitteru</h1>
+
+	{foreach $posts as $post}
+		{skipIf !$showRetweeted && isset($post->retweeted_status)}
+		<article class="post" onclick="window.location='{$twitterUrl|noescape}{$post->user->screen_name|noescape}/status/{$post->id|noescape}';">
+			<div class="author">
+				<a href="{$twitterUrl|noescape}{$post->user->screen_name}">
+					<span class="name">{$post->user->name}</span>
+					<span class="alias">@{$post->user->screen_name}</span>
+				</a>
+			</div>
+			<div class="date">{$post->created_at|date:'j.n.'}</div>
+			<div class="text">{$post->full_text|breakLines}</div>
+		</article>
+	{/foreach}
+{/block}

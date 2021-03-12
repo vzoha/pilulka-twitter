@@ -1,0 +1,40 @@
+body {
+    width: 600px;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgb(33, 37, 41);
+    text-align: left;
+    background-color: rgb(246, 246, 246);
+    margin: auto;
+}
+
+a {
+    color: rgb(76, 183, 72);
+    background-color: rgba(0, 0, 0, 0);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(53, 128, 50);
+}
+
+article.post {
+    cursor: pointer;
+    border: 1px solid black;
+    border-bottom: 0px;
+    padding: 0.5em;
+}
+
+article.post .author .name {
+    font-weight: bold;
+}
+
+article.post .author {
+    display:inline;
+}
+
+article.post .date {
+    display:inline;
+}
