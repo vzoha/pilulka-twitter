@@ -22,7 +22,7 @@ parameters:
 ```
 
 # Nastavení
-Veškeré nastavení je v souboru `config/common.neon` a v `config/local.neon`.
+Veškeré nastavení je v souboru `config/common.neon` a `config/local.neon`.
 
 Pro napojení na Twitter API je třeba doplnit klíče a tokeny:
 * `consumerKey`
