@@ -1,9 +1,5 @@
 parameters:
 	twitterSettings:
-		consumerKey: ''
-		consumerSecret: ''
-		oauthAccessToken: ''
-		oauthAccessTokenSecret: ''
 		loadPostsParams:
 			orQueryParamsValidationRegex: ['#\w', 'url:\w']
 			# https://developer.twitter.com/en/docs/twitter-api/v1/rules-and-filtering/search-operators
