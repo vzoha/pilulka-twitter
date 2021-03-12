@@ -1,0 +1,5 @@
+.idea
+/config/local.neon
+/log
+/temp
+/vendor
